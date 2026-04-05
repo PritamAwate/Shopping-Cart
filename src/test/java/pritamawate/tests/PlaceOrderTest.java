@@ -15,13 +15,12 @@ public class PlaceOrderTest extends BaseTest {
     @Test(dataProvider  = "getData")
     public void PlaceOrder(HashMap<String, String> input)
     {
+
+        //checking webhook by adding this line
         ProductCatalogue productCatalogue = landingPage.loginApplication(input.get("email"), input.get("password"));
 
         productCatalogue.addProductToCart(input.get("product"));
        CartPage cartPage = productCatalogue.goToCartPage();
-
-        //Boolean match = cartPage.VerifyProductDisplay(input.get("product"));
-       // Assert.assertTrue(match);
 
        CheckoutPage checkoutPage = cartPage.GoToCheckout();
        checkoutPage.fillCheckoutDetails("pritam", "awate", "411033");
